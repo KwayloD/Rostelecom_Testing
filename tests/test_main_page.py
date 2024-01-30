@@ -24,7 +24,7 @@ def web_driver():
     driver.quit()
 
 def test_main_header(web_driver):
-    """ Просмотр основных страниц в главной шапку сайта """
+    """ Просмотр основных страниц в главной шапке сайта """
     web_driver.find_element(By.ID, 'id_app_lk_b2c').click()
     time.sleep(5)
     web_driver.find_element(By.XPATH, '//div[@class="StyledBottomLinksWrapper-YYdXz bbsGQi"]/div[2]/p').click()
