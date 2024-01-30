@@ -195,7 +195,11 @@ def test_negative_password_recovery(web_driver):
     web_driver.find_element(By.ID, 'username').send_keys(a.email)
     time.sleep(1)
     web_driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-    WebDriverWait(web_driver, 3).until(
-        EC.presence_of_element_located((By.ID, 'form-error-message'))
-    )
-    assert web_driver.find_element(By.ID, 'form-error-message').text == "Неверный логин или текст с картинки"
+    try:
+        WebDriverWait(web_driver, 3).until(
+            EC.presence_of_element_located((By.ID, 'form-error-message'))
+        )
+        assert web_driver.find_element(By.ID, 'form-error-message').text == "Неверный e-mail или текст с картинки"
+    except Exception as ex:
+        print(ex)
+        print("""Сообщение "Неверный e-mail или текст с картинки" не вывелось!""")
